@@ -9,15 +9,7 @@ func (s *Stack) Push(value int) {
 	s.data = append(s.data, value)
 }
 
-func (s *Stack) IsEmpty() bool {
-	return len(s.data) == 0
-}
-
 func (s *Stack) Pop() (int, bool) {
-	if s.IsEmpty() {
-		return -1, true
-	}
-
 	index := len(s.data) - 1
 
 	element := s.data[index]

@@ -6,15 +6,10 @@ import (
 )
 
 func NextTower(from TowerID, to TowerID) TowerID {
-	ids := []TowerID{}
-	ids = append(ids, TowerID(A), TowerID(B), TowerID(C))
-
+	ids := []TowerID{TowerID(A), TowerID(B), TowerID(C)}
+	
 	for _, s := range ids {
-		if s == from {
-			continue
-		}
-
-		if s == to {
+		if s == from || s == to {
 			continue
 		}
 
@@ -29,7 +24,6 @@ func HanoiTower(towers *Towers, fromID TowerID, toID TowerID) {
 	from := towers.Tower(fromID)
 	to := towers.Tower(toID)
 
-	
 	if from.Size() == 1 {
 		towers.Move(from, to)
 		return
@@ -54,14 +48,12 @@ func HanoiTower(towers *Towers, fromID TowerID, toID TowerID) {
 	)
 
 	towers.Increase()
-
-	return
 }
 
 func main() {
 	size := 8
 	towers := NewTowers(size)
-	HanoiTower(towers, TowerID(A), TowerID(C))
 
+	HanoiTower(towers, TowerID(A), TowerID(C))
 	fmt.Printf("Tower of Hanoi with %d disks takes %d moves to be completed", size, towers.Moves())
 }
